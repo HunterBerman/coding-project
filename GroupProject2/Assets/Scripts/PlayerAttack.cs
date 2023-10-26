@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform attackPoint;
+    public float attackRange;
+    public LayerMask enemyLayers;
 
     // Update is called once per frame
     void Update()
@@ -22,7 +20,12 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
+        foreach(Collider enemy in hitEnemies)
+        {
+            Debug.Log("You hit the enemy");
+        }
     }
     
 }
